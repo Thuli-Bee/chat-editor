@@ -1,0 +1,58 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="w3.css"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mini Note editor</title>
+</head>
+<body>
+<style type="text/css">
+</style>
+<header> 
+<b>Mini Notepad </b><span id="word" >0 words</span>
+</header>
+<section>
+<center>
+<textarea id="txt" >
+Your Text...
+</textarea>
+<button id="minus" >➖</button>
+<button id="plus" >➕</button>
+<button id="font" >🅰️</button>
+<button id="color" >🔴</button>
+<button id="clip" >📄</button>
+</center>
+</section>
+<script type="text/javascript">
+function id(x){return document.getElementById(x)}
+var txt = id("txt");
+var word = id("word");
+txt.value.length=0;
+var t = setInterval(()=>{
+word.innerText=txt.value.trim().split(' ').length +" words"
+},100);
+
+var size = 16
+id("minus").onclick=()=>{
+txt.style.fontSize=size+"px";
+size-=2}
+
+id("plus").onclick=()=>{
+txt.style.fontSize=size+"px";
+size+=2}
+
+id("font").onclick=()=>
+txt.classList.toggle("serif");
+
+id("color").onclick=()=>
+txt.classList.toggle("light");
+
+id("clip").onclick=()=>{
+txt.select();
+document.execCommand("copy");
+}
+</script>
+</body>
+</html>
